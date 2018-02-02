@@ -9,7 +9,7 @@ public class MobilePhone {
 
     public MobilePhone(String myNumber) {
         this.myNumber = myNumber;
-        this.myContacts = new ArrayList<Contact>();
+        this.myContacts = new ArrayList<>();
     }
 
     public boolean addNewContact(Contact contact) {
@@ -33,6 +33,7 @@ public class MobilePhone {
                 return i;
             }
         }
+        return -1;
     }
 
 }
