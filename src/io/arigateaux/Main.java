@@ -1,4 +1,4 @@
-package com.arigateaux;
+package io.arigateaux;
 
 import java.util.Scanner;
 

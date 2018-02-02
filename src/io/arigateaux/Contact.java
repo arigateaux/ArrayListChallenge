@@ -1,4 +1,4 @@
-package com.arigateaux;
+package io.arigateaux;
 
 public class Contact {
 
