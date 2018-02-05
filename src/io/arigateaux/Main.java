@@ -9,6 +9,8 @@ public class Main {
 
     public static MobilePhone myPhone = new MobilePhone("1234567890");
     public static Contact contact;
+    public static String name;
+    public static String number;
 
     public static void main(String[] args) {
 
@@ -24,11 +26,13 @@ public class Main {
                 // add contact
                 case 2:
                     System.out.println("Enter the name of your contact: ");
-                    String name = scanner.nextLine();
+                    name = scanner.nextLine();
                     System.out.println("Enter the number of your contact: ");
-                    String number = scanner.nextLine();
+                    number = scanner.nextLine();
                     contact = new Contact(name, number);
-                    myPhone.addNewContact(contact);
+                    if (myPhone.addNewContact(contact)) {
+                        System.out.println(name + " added to contact list.");
+                    }
                     break;
                 // update contact
                 case 3:
@@ -36,7 +40,13 @@ public class Main {
                     break;
                 // remove contact
                 case 4:
-
+                    System.out.println("Enter the name of your contact: ");
+                    name = scanner.nextLine();
+                    
+                    contact = new Contact(name, number);
+                    if (myPhone.addNewContact(contact)) {
+                        System.out.println(name + " added to contact list.");
+                    }
                     break;
                 // search contact
                 case 5:
