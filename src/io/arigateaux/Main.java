@@ -31,26 +31,39 @@ public class Main {
                     number = scanner.nextLine();
                     contact = new Contact(name, number);
                     if (myPhone.addNewContact(contact)) {
-                        System.out.println(name + " added to contact list.");
+                        System.out.println(name + " added to contact list.\n");
                     }
                     break;
                 // update contact
                 case 3:
-
+                    System.out.println("Enter the name of your contact: ");
+                    name = scanner.nextLine();
+                    contact = myPhone.findContact(name);
+                    if (contact != null) {
+                        
+                    }
                     break;
                 // remove contact
                 case 4:
                     System.out.println("Enter the name of your contact: ");
                     name = scanner.nextLine();
-                    
-                    contact = new Contact(name, number);
-                    if (myPhone.addNewContact(contact)) {
-                        System.out.println(name + " added to contact list.");
+                    contact = myPhone.findContact(name);
+                    if (myPhone.removeContact(contact)) {
+                        System.out.println(name + " removed from contact list.\n");
                     }
                     break;
                 // search contact
                 case 5:
-
+                    System.out.println("Enter the name of your contact: ");
+                    name = scanner.nextLine();
+                    contact = myPhone.findContact(name);
+                    if (contact != null) {
+                        System.out.println(contact.getName() + " found!");
+                        myPhone.showContact(contact);
+                    }
+                    else {
+                        System.out.println(name + " not found.");
+                    }
                     break;
                 // exit loop
                 case 6:

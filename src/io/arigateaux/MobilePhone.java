@@ -13,7 +13,7 @@ public class MobilePhone {
     }
 
     public boolean addNewContact(Contact contact) {
-        if (findContact(contact.getName()) >= 0) {
+        if (findContact(contact.getName()) != null) {
             System.out.println("Contact already on file.");
             return false;
         }
@@ -25,29 +25,32 @@ public class MobilePhone {
         return this.myContacts.indexOf(contact);
     }
 
-    public int findContact(String contactName) {
+    public Contact findContact(String contactName) {
         for (int i = 0; i < this.myContacts.size(); i++) {
             Contact contact = this.myContacts.get(i);
             if (contact.getName().equals(contactName)) {
-                return i;
+                return contact;
             }
         }
-        return -1;
+        return null;
     }
 
     public boolean removeContact(Contact contact) {
-        if (findContact(contact.getName()) >= 0) {
+        if (findContact(contact.getName()) != null) {
             myContacts.remove(contact);
             return true;
         }
-        System.out.println("Contact not on file");
         return false;
     }
 
     public void showContacts() {
         for (Contact contact : myContacts) {
-            System.out.printf("%s (%s)\n\n", contact.getName(), contact.getNumber());
+            showContact(contact);
         }
+    }
+
+    public void showContact(Contact contact) {
+        System.out.println(contact.getName() + " " + contact.getNumber());
     }
 
 }
