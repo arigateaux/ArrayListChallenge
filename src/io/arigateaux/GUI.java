@@ -2,10 +2,6 @@ package io.arigateaux;
 
 public class GUI {
 
-    public GUI() {
-        showMenu();
-    }
-
     public void showMenu() {
         System.out.println(
                 "1 - Show Contact\n" +

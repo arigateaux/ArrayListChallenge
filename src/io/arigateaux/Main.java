@@ -11,11 +11,11 @@ public class Main {
     public static Contact contact;
     public static String name;
     public static String number;
+    public static GUI gui = new GUI();
 
     public static void main(String[] args) {
-
         while (isRunning) {
-            new GUI();
+            gui.showMenu();
             int input = scanner.nextInt();
             scanner.nextLine();
             switch (input) {
@@ -30,27 +30,20 @@ public class Main {
                     System.out.println("Enter the number of your contact: ");
                     number = scanner.nextLine();
                     contact = new Contact(name, number);
-                    if (myPhone.addNewContact(contact)) {
-                        System.out.println(name + " added to contact list.\n");
-                    }
+                    myPhone.addNewContact(contact);
                     break;
                 // update contact
                 case 3:
                     System.out.println("Enter the name of your contact: ");
                     name = scanner.nextLine();
-                    contact = myPhone.findContact(name);
-                    if (contact != null) {
-                        
-                    }
+                    if ()
                     break;
                 // remove contact
                 case 4:
                     System.out.println("Enter the name of your contact: ");
                     name = scanner.nextLine();
                     contact = myPhone.findContact(name);
-                    if (myPhone.removeContact(contact)) {
-                        System.out.println(name + " removed from contact list.\n");
-                    }
+                    myPhone.removeContact(contact);
                     break;
                 // search contact
                 case 5:
@@ -72,6 +65,5 @@ public class Main {
                     break;
             }
         }
-
     }
 }

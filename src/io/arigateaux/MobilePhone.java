@@ -12,11 +12,20 @@ public class MobilePhone {
         this.myContacts = new ArrayList<>();
     }
 
+    public void updateContact(Contact oldContact, Contact newContact) {
+        int oldContactPosition = findContact(oldContact);
+        if (oldContactPosition < 0)
+            System.out.println(oldContact.getName() + " could not be found.");
+        myContacts.set(oldContactPosition, newContact);
+        System.out.println(oldContact.getName() + " replaced with " + newContact.getName());
+    }
+
     public boolean addNewContact(Contact contact) {
-        if (findContact(contact.getName()) != null) {
+        if (findContact(contact) >= 0) {
             System.out.println("Contact already on file.");
             return false;
         }
+        System.out.println(contact.getName() + " added to contact list.\n");
         myContacts.add(contact);
         return true;
     }
@@ -25,18 +34,24 @@ public class MobilePhone {
         return this.myContacts.indexOf(contact);
     }
 
-    public Contact findContact(String contactName) {
-        for (int i = 0; i < this.myContacts.size(); i++) {
-            Contact contact = this.myContacts.get(i);
-            if (contact.getName().equals(contactName)) {
-                return contact;
-            }
+    private boolean findContact(String contactName) {
+        for (Contact contact : myContacts) {
+            if (contact.getName().equals(contactName))
+                return true;
+        }
+        return false;
+    }
+
+    public String queryContact(Contact contact) {
+        if (findContact(contact) >= 0) {
+            return contact.getName();
         }
         return null;
     }
 
     public boolean removeContact(Contact contact) {
-        if (findContact(contact.getName()) != null) {
+        if (findContact(contact.getName())) {
+            System.out.println(contact.getName() + " was deleted.");
             myContacts.remove(contact);
             return true;
         }
@@ -49,8 +64,9 @@ public class MobilePhone {
         }
     }
 
-    public void showContact(Contact contact) {
-        System.out.println(contact.getName() + " " + contact.getNumber());
+    public String showContact(Contact contact) {
+        return contact.getName() + " " + contact.getNumber();
+
     }
 
 }
